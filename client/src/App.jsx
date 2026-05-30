@@ -12,7 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import ChatRoom from "./pages/ChatRoom";
 import ChessGame from "./pages/ChessGame";
-import Elibrary from "./pages/Elibrary";
+import Elibrary from "./pages/ELibrary";
 import Music from "./pages/Music";
 
 function App() {
