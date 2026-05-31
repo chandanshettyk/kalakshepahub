@@ -5,11 +5,9 @@
 }
 
 .chat-container {
-    display: flex;
-    height: calc(100vh - 50px);
-    width: 100%;
-    background: #313338;
-    overflow: hidden;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
 
 
@@ -52,10 +50,10 @@
 /* RIGHT SIDE */
 
 .chat-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 
@@ -102,6 +100,18 @@
     margin-top: 5px;
     color: #dbdee1;
     line-height: 1.5;
+}
+
+.message-input-container {
+  padding: 15px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  background: #2f3136;
+
+  display: flex;
+  gap: 10px;
+
+  position: sticky;
+  bottom: 0;
 }
 
 

@@ -1,5 +1,8 @@
 import { io } from "socket.io-client";
 
-export const socket = io(
-    "https://kalakshepahub.onrender.com"
-);
+const URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5000"
+    : "https://kalakshepahub.onrender.com";
+
+export const socket = io(URL);

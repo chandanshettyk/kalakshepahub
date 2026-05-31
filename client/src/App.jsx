@@ -7,9 +7,10 @@ SignIn,
 UserButton,
 } from "@clerk/clerk-react";
 
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import ChatRoom from "./pages/ChatRoom";
 import ChessGame from "./pages/ChessGame";
 import Elibrary from "./pages/ELibrary";
@@ -47,16 +48,6 @@ Loading... </div> </ClerkLoading>
 
     <SignedIn>
       <BrowserRouter>
-        <div
-          style={{
-            padding: "10px",
-            background: "#111827",
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <UserButton afterSignOutUrl="/" />
-        </div>
 
         <Routes>
           <Route path="/" element={<Dashboard />} />

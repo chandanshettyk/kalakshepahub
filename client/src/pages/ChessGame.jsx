@@ -3,6 +3,7 @@ import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 import { socket } from "../socket";
 import { useUser } from "@clerk/clerk-react";
+import "./ChessGame.css";
 
 export default function ChessGame() {
     const { user } = useUser();
@@ -16,7 +17,6 @@ export default function ChessGame() {
       .toString(36)
       .substring(2, 8)
       .toUpperCase();
-
     setRoom(code);
   };
 
@@ -67,61 +67,73 @@ export default function ChessGame() {
   }, []);
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#0f172a",
-        color: "white",
-        padding: "20px",
-      }}
-    >
-      <h1>♟ Multiplayer Chess</h1>
+  <div className="chess-page">
+    <h1 className="chess-title">
+      ♟ Kalakshepa Chess Arena
+    </h1>
 
-      {!joined ? (
-        <>
-          <button onClick={createRoom}>
-            Create Chess Room
-          </button>
+    {!joined ? (
+      <div className="join-card">
+        <button
+          className="join-btn"
+          onClick={createRoom}
+        >
+          Create Chess Room
+        </button>
 
-          <br />
-          <br />
+        <input
+          className="join-input"
+          type="text"
+          value={room}
+          onChange={(e) =>
+            setRoom(
+              e.target.value.toUpperCase()
+            )
+          }
+          placeholder="Enter Room Code"
+        />
 
-          <input
-            type="text"
-            value={room}
-            onChange={(e) => setRoom(e.target.value.toUpperCase())}
-            placeholder="Enter Room Code"
-            style={{
-              padding: "10px",
-              width: "250px",
-            }}
-          />
+        <button
+          className="join-btn"
+          onClick={joinRoom}
+        >
+          Join Room
+        </button>
 
-          <br />
-          <br />
+        {room && (
+          <p>
+            Room Code:
+            <strong> {room}</strong>
+          </p>
+        )}
+      </div>
+    ) : (
+      <div className="chess-layout">
+        <div className="chess-sidebar">
+          <div className="chess-card">
+            👤 {user?.firstName || "Player"}
+          </div>
 
-          <button onClick={joinRoom}>
-            Join Room
-          </button>
+          <div className="chess-card">
+            🎮 Room: {room}
+          </div>
 
-          {room && (
-            <p>
-              Room Code: <strong>{room}</strong>
-            </p>
-          )}
-        </>
-      ) : (
-        <>
-          <h2>Room: {room}</h2>
+          <div className="chess-card">
+            ♟ Multiplayer Match
+          </div>
+        </div>
 
-          <div style={{ width: "600px", maxWidth: "100%" }}>
+        <div className="board-section">
+          <div className="board-wrapper">
             <Chessboard
               position={game.fen()}
               onPieceDrop={onDrop}
             />
           </div>
-        </>
-      )}
-    </div>
-  );
+        </div>
+      </div>
+    )}
+  </div>
+);
+
 }
