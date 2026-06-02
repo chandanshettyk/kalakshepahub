@@ -16,6 +16,7 @@ import ChatRoom from "./pages/ChatRoom";
 import ChessGame from "./pages/ChessGame";
 import ELibrary from "./pages/ELibrary";
 import Music from "./pages/Music";
+import Feedback from "./pages/Feedback";
 
 function App() {
 return (
@@ -68,6 +69,12 @@ background: "#0f172a",
           path="/music"
           element={<Music />}
         />
+
+        <Route
+  path="/feedback"
+  element={<Feedback />}
+/>
+
       </Routes>
     </BrowserRouter>
   </SignedIn>

@@ -25,6 +25,8 @@ export default function Sidebar() {
       <Link to="/chess">♟ Play Chess</Link>
       <Link to="/library">📚 Open Library</Link>
       <Link to="/music">🎵 Music Hub</Link>
+<Link to="/feedback">⭐ Feedback</Link>
+<Link to="/reviews">📝 Reviews</Link>
 
       <div className="sidebar-footer">
         <div className="sidebar-clock">
