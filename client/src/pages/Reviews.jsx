@@ -5,17 +5,18 @@ export default function Reviews() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/reviews`)
-      .then((res) => res.json())
-      .then((data) => {
-        setReviews(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
-  }, []);
+  fetch("https://kalakshepahub.onrender.com/api/reviews")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Reviews:", data);
+      setReviews(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Fetch Error:", err);
+      setLoading(false);
+    });
+}, []);
 
   return (
     <div
