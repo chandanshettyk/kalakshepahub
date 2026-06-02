@@ -7,19 +7,19 @@ export default function Feedback() {
   const submitReview = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/reviews`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: "Chandan Shetty",
-            rating,
-            review,
-          }),
-        }
-      );
+  "http://localhost:5000/api/reviews",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: "Chandan Shetty",
+      rating,
+      review,
+    }),
+  }
+);
 
       const data = await response.json();
 
