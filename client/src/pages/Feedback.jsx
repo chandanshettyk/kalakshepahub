@@ -1,23 +1,28 @@
 import { useState } from "react";
+import { useUser } from "@clerk/clerk-react";
 
 export default function Feedback() {
+  const { user } = useUser();
+
   const [rating, setRating] = useState(5);
   const [review, setReview] = useState("");
 
   const submitReview = async () => {
     try {
-      const response = await fetch("https://kalakshepahub.onrender.com/api/reviews", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: "Chandan Shetty",
-      rating,
-      review,
-    }),
-  }
-);
+      const response = await fetch(
+        "https://kalakshepahub.onrender.com/api/reviews",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: user?.fullName || user?.firstName || "Anonymous",
+            rating,
+            review,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -25,6 +30,8 @@ export default function Feedback() {
         alert("Review Submitted Successfully ✅");
         setReview("");
         setRating(5);
+      } else {
+        alert("Failed to submit review");
       }
     } catch (error) {
       console.error(error);
